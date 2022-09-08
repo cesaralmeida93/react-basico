@@ -7,6 +7,7 @@
 
 - `npx create-react-app meu-projeto`
 - `cd meu projeto`
+- `npm start`
 
 
 ## Aula 3
@@ -17,4 +18,106 @@
 ```javascript
 <div className="App"> //JSX
 <div class="App"> //HTML
+```
+
+
+## Aula 4 - Componentes
+- criação de um componente
+```javascript
+function Frase() {
+    return (
+        <div>
+            <p>Este é um componente com uma frase!</p>
+        </div>
+    )
+
+}
+
+export default Frase;
+```
+- componentes podem ser importados para qualquer arquivo JS, inclusive usado em outros componentes
+
+```javascript
+import Frase from "./Frase";
+
+function HelloWorld() {
+
+    return (
+        <div>
+            <Frase />
+            <h1>Meu primeiro componente</h1>
+            <Frase />
+            <Frase />
+        </div>
+    )
+
+}
+
+export default HelloWorld;
+```
+
+## Aula5 - Props
+- valores passados para os componentes
+- podem ser dinâmicos
+- valor da props é passado como um atributo na chamada do componente
+- props são somente leitura
+
+- Ex1 props:
+```javascript
+function SayMyName(props) {
+    return (
+        <div>
+            <p>Olá {props.name}</p>
+        </div>
+    )
+}
+
+export default SayMyName
+
+
+import './App.css';
+import SayMyName from './components/SayMyName';
+
+function App() {
+  const nome = 'César'
+  return (
+    <div className="App">
+      <h2>Alterando o JSX</h2>
+      <SayMyName name="Carlos" />
+      <SayMyName name={nome} />
+    </div>
+  );
+}
+
+export default App;
+```
+
+- Ex2 props:
+```javascript
+function Pessoa({ nome, idade, profissao, foto }) {
+    return (
+        <div>
+            <img src={foto} alt={nome} />
+            <h2>Nome: {nome}</h2>
+            <p>Idade: {idade}</p>
+            <p>Profissão: {profissao}</p>
+        </div>
+    )
+}
+
+export default Pessoa
+
+import './App.css';
+import Pessoa from './components/Pessoa';
+
+function App() {
+  return (
+    <div className="App">
+      <h2>Alterando o JSX</h2>
+      <Pessoa nome="César" idade="29" profissao="Programador" foto="https://via.placeholder.com/150" carlos="15" />
+    </div>
+  );
+}
+
+export default App;
 ```

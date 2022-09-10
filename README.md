@@ -121,3 +121,40 @@ function App() {
 
 export default App;
 ```
+
+## Aula6 - CSS no React(CSS modules)
+- CSS pode ser adicionado de forma global na aplicação
+- É melhor estilizar a nível de componentes
+- Utilizar CSS Modules para isso
+- Basta criar um arquivo como: `Componente.module.css`
+- E chamar este CSS no componente
+- o nome das classes tem que ser camelcase ou _
+
+- Ex CSS:
+```css
+.fraseContainer {
+    background-color: #333;
+    border: 1px solid #111;
+}
+
+.fraseContent {
+    color: #fff;
+    background-color: #333;
+    margin: 0;
+}
+```
+
+```javascript
+import styles from './Frase.module.css'
+
+function Frase() {
+    return (
+        <div className={styles.fraseContainer}>
+            <p className={styles.fraseContent}>Este é um componente com uma frase!</p>
+        </div>
+    )
+
+}
+
+export default Frase;
+```
